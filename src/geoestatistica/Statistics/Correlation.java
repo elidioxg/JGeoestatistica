@@ -14,4 +14,9 @@ public class Correlation {
         return cov/(Math.sqrt(var1*var2));        
     }
     
+    public double pearsonCoeff(double variance1, double variance2,
+            double covariance){
+        return covariance/Math.sqrt(variance1*variance2);    
+    }
+    
 }
