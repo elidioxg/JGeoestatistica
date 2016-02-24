@@ -1,6 +1,5 @@
 package geoestatistica.Statistics;
 
-import geoestatistica.Statistics.Average;
 import java.util.ArrayList;
 
 public class StdDeviation {

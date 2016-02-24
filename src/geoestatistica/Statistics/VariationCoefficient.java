@@ -1,7 +1,5 @@
 package geoestatistica.Statistics;
 
-import geoestatistica.Statistics.StdDeviation;
-import geoestatistica.Statistics.Average;
 import java.util.ArrayList;
 
 public class VariationCoefficient {
