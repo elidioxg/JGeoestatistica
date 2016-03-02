@@ -16,7 +16,7 @@ public class Variogram {
             double value = 0.;
             int pairsNumber = 0;
             for (int i = 0; i < array.length; i++) {
-                for (int j = i + 1; j < array.length - 1; j++) {                    
+                for (int j = i + 1; j < array.length; j++) {                    
                     double distanceX
                             = Double.parseDouble(array[i][columnX].get(0).toString())
                             - Double.parseDouble(array[j][columnX].get(0).toString());
