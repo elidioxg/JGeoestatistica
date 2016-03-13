@@ -1,13 +1,13 @@
 package geoestatistica.Statistics;
 
+import static geoestatistica.Statistics.Average.arithmeticAverage;
 import java.util.ArrayList;
 
 public class StdDeviation {
     
-    //Standard Deviation
-    public double stdDeviation(ArrayList<Double> array){
-        Average average = new Average();
-        double averageValue = average.arithmeticAverage(array);
+    //Standard Deviation  
+    public static double stdDeviation(ArrayList<Double> array){        
+        double averageValue = arithmeticAverage(array);
         double sum = 0.;
         for(int i= 0; i<=array.size()-1; i++){
             sum += Math.pow((averageValue - array.get(i)), 2);
@@ -19,9 +19,8 @@ public class StdDeviation {
     //TODO: stdDeviation for frequency table
     
     //Logaritmic Standard Deviation 
-    public double logStdDeviation(ArrayList<Double> array, int baseLog){
-        Average average = new Average();
-        double avrValue = average.arithmeticAverage(array);
+    public static double logStdDeviation(ArrayList<Double> array, int baseLog){        
+        double avrValue = arithmeticAverage(array);
         double sum = 0.;
         for(int i = 0; i<= array.size()-1; i++){
             sum += Math.pow ((Math.log(sum) - Math.log(avrValue) ), 2);
@@ -34,7 +33,7 @@ public class StdDeviation {
     //TODO: Logaritmic Standard Deviation with frequency tables
     
     //Arithmetic standard deviation for two samples
-    public double stdDeviationTwoSamples(int sample1Number, int sample2Number,
+    public static double stdDeviationTwoSamples(int sample1Number, int sample2Number,
             double sample1StdDeviation, double sample2StdDeviation){
         double result = 0.;
         result = Math.sqrt(  ( (sample1Number*Math.pow(sample1StdDeviation, 2) ) +

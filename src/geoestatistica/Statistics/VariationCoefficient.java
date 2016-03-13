@@ -1,21 +1,21 @@
 package geoestatistica.Statistics;
 
+import static geoestatistica.Statistics.Average.arithmeticAverage;
+import static geoestatistica.Statistics.StdDeviation.stdDeviation;
 import java.util.ArrayList;
 
 public class VariationCoefficient {
     
-    public double variationCoefficient(double stdDeviation, double 
+    public static double variationCoefficient(double stdDeviation, double 
             arithmeticAvg){
         return 100*stdDeviation/arithmeticAvg;    
     }
     
-    public double variationCoefficient(ArrayList<Double> array){
-        Average average = new Average();
-        double avgValue = average.arithmeticAverage(array);
-        StdDeviation stdDev = new StdDeviation();
-        double stdDevValue = stdDev.stdDeviation(array);
+    public static double variationCoefficient(ArrayList<Double> array){        
+        double avgValue = arithmeticAverage(array);        
+        double stdDevValue = stdDeviation(array);
         return 100*stdDevValue/avgValue;
     }
     
-    //TODO: logVariationCoefficient
+    //TODO: logVariationCoefficient    
 }
