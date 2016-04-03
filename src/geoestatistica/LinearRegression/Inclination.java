@@ -12,7 +12,7 @@ public class Inclination {
         double sumX2 = 0.;
         double sumXY = 0.;
         for (int i = 0; i < arrayX.size(); i++) {
-            sumX2 += Math.pow(Double.valueOf(arrayX.get(i).toString()), 2);
+            sumX2 += Math.pow(arrayX.get(i), 2);
             sumXY += arrayX.get(i)* arrayY.get(i);
         }        
         double avgX = arithmeticAverage(arrayX);

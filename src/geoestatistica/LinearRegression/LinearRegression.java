@@ -6,20 +6,19 @@ import java.util.ArrayList;
 
 public class LinearRegression {    
 
-    public ArrayList<Double> linearRegression(ArrayList<Double> arrayX,
+    public static ArrayList<Double> linearRegression(ArrayList<Double> arrayX,
             ArrayList<Double> arrayY) throws Exception {
         double inc = getInclination(arrayX, arrayY);
         double initialValue = getInitialValue(arrayX, arrayY, inc);
         ArrayList<Double> result = new ArrayList<>();
         for (int i = 0; i < arrayX.size(); i++) {
-            result.add(initialValue + (inc * Double.valueOf(
-                    arrayX.get(i).toString())));
+            result.add(initialValue + (inc * arrayX.get(i)));
         }
         return result;
     }
 
     //TODO: values must be reversed
-    public ArrayList<Double> linearRegression(ArrayList<Double> arrayX,
+    public static ArrayList<Double> linearRegression(ArrayList<Double> arrayX,
             ArrayList<Double> arrayY, double minValue,
             double maxValue, double stepValue) throws Exception {
         double inc = getInclination(arrayX, arrayY);

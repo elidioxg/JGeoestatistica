@@ -4,6 +4,11 @@ import java.util.ArrayList;
 
 public class SampleAmplitude {
     
+    /**     
+     * @param array
+     * @return Difference(Maximum Value - Minimum Value)
+     */
+    
     public static double getAmplitude(ArrayList<Double> array){
         double minValue=0.;
         double maxValue=0.;

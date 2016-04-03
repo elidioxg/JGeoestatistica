@@ -4,6 +4,13 @@ import java.util.ArrayList;
 
 public class QuiSquare {
 
+    /**
+     * Qui-Square coefficient
+     * @param observedFrequency
+     * @param expectedFrequency
+     * @return
+     * @throws Exception 
+     */
     public static double getQuiSquare(ArrayList<Double> observedFrequency,
             ArrayList<Double> expectedFrequency) throws Exception {
         if (observedFrequency.size() != expectedFrequency.size()) {

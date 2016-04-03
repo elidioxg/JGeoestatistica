@@ -3,7 +3,12 @@ package geoestatistica.Statistics;
 import java.util.ArrayList;
 
 public class Variance {
-    
+    /**
+     * 
+     * @param array
+     * @param average
+     * @return 
+     */
     public static double variance(ArrayList<Double> array, double average){
         double result = 0.;
         for(int i = 0; i <array.size()-1; i++){
@@ -11,7 +16,11 @@ public class Variance {
         }
         return result/array.size();
     }
-    
+    /**
+     * 
+     * @param array
+     * @return 
+     */
     public static double variance(ArrayList<Double> array){
         double result = 0.;
         Average avg = new Average();

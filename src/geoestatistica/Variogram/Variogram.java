@@ -2,10 +2,18 @@ package geoestatistica.Variogram;
 
 import java.util.ArrayList;
 
-public class Variogram {
-
-    /*
-     *Returns: value of step, variation coefficient, number of pairs
+public class Variogram {    
+    
+    /**     
+     * Variogram for 2 Dimensions
+     * @param array
+     * @param initialDistance
+     * @param stepSize
+     * @param maxDistance
+     * @param columnX     
+     * @param columnY
+     * @param columnContent
+     * @return value of step, variation coefficient, number of pairs
      */
     //TODO: add angle min and max tolerance
     public ArrayList[][] variogram2D(ArrayList[][] array,
@@ -50,8 +58,16 @@ public class Variogram {
         return result;
     }
 
-    /*
-    * Returns: value of step, variation coefficient, number of pairs
+    /**
+     *  Returns: value of step, variation coefficient, number of pairs
+     * @param xData
+     * @param yData
+     * @param contentData
+     * @param initialDistance
+     * @param stepSize
+     * @param maxDistance
+     * @return 
+     * @throws java.lang.Exception 
      */
     public ArrayList[][] variogram2D(ArrayList<Double> xData,
             ArrayList<Double> yData, ArrayList<Double> contentData,
@@ -95,4 +111,5 @@ public class Variogram {
         }
         return result;
     }
+    //to do: variogram for regular grid
 }
