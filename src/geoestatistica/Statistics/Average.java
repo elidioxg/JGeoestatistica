@@ -1,8 +1,17 @@
 package geoestatistica.Statistics;
 
+import geoestatistica.Vectors.Vector;
 import java.util.ArrayList;
 
 public class Average {
+    
+    public static double arithmeticAverage(Vector vector) {
+        double sum = 0.;
+        for (int i = 0; i <= vector.getSize() - 1; i++) {
+            sum += vector.getValue(i).doubleValue();
+        }
+        return sum / (vector.getSize());
+    }
     
     /**
      * Arithmetic Average
