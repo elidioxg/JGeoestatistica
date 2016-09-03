@@ -1,6 +1,6 @@
 package geoestatistica.LinearRegression;
 
-import static geoestatistica.Statistics.Average.arithmeticAverage;
+import geoestatistica.Statistics.Average;
 import java.util.ArrayList;
 
 public class Inclination {
@@ -15,8 +15,8 @@ public class Inclination {
             sumX2 += Math.pow(arrayX.get(i), 2);
             sumXY += arrayX.get(i)* arrayY.get(i);
         }        
-        double avgX = arithmeticAverage(arrayX);
-        double avgY = arithmeticAverage(arrayY);
+        double avgX = Average.arithmeticAverage(arrayX);
+        double avgY = Average.arithmeticAverage(arrayY);
         double sXX = sumX2 - (arrayX.size() * Math.pow(avgX, 2));
         double sXY = sumXY - (arrayX.size() * avgX * avgY);
         return sXY / sXX;

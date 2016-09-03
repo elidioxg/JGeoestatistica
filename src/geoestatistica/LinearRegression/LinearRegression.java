@@ -1,41 +1,58 @@
 package geoestatistica.LinearRegression;
 
-import static geoestatistica.LinearRegression.Inclination.getInclination;
-import static geoestatistica.LinearRegression.InitialValue.getInitialValue;
 import java.util.ArrayList;
 
-public class LinearRegression {    
+public class LinearRegression {
 
-    public static ArrayList<Double> linearRegression(ArrayList<Double> arrayX,
-            ArrayList<Double> arrayY) throws Exception {
-        double inc = getInclination(arrayX, arrayY);
-        double initialValue = getInitialValue(arrayX, arrayY, inc);
+    private double initialValue = 0.;
+    private double inclination = 0.;
+    private ArrayList<Double> x = new ArrayList<>();
+
+    public LinearRegression(ArrayList<Double> arrayX,
+            ArrayList<Double> arrayY) {
+        x = arrayX;
+        try {
+            this.inclination = Inclination.getInclination(arrayX, arrayY);
+        } catch (Exception e) {
+
+        }
+        this.initialValue = InitialValue.getInitialValue(arrayX, arrayY, inclination);
+    }
+
+    public ArrayList<Double> linearRegressionPointsList(double firstValue,
+            double lastValue, double stepValue) {
         ArrayList<Double> result = new ArrayList<>();
-        for (int i = 0; i < arrayX.size(); i++) {
-            result.add(initialValue + (inc * arrayX.get(i)));
+        for (double i = firstValue; i <= lastValue; i += stepValue) {
+            result.add(this.initialValue + (this.inclination * i));            
         }
         return result;
     }
 
-    //TODO: values must be reversed
-    public static ArrayList<Double> linearRegression(ArrayList<Double> arrayX,
-            ArrayList<Double> arrayY, double minValue,
-            double maxValue, double stepValue) throws Exception {
-        double inc = getInclination(arrayX, arrayY);
-        double initialValue = getInitialValue(arrayX, arrayY, inc);
-        double steps = (maxValue - minValue) / stepValue;
-        ArrayList<Double> result = new ArrayList<>();
-        int j = (int) steps;
-        for (int i = 0; i < j; i++) {
-            result.add(initialValue + (inc * minValue));
-            minValue += steps;
-        }
-        return result;
+    /**
+     *
+     * @param initialValue
+     * @param inclination
+     * @param valueAt
+     * @return
+     */
+    public double getValueAt(double valueAt) {        
+        return (this.initialValue + (this.inclination * valueAt));
     }
-
-    public double getValueAt(double initialValue, double inclination,
-            double valueAt) {
-        return (initialValue + (inclination * valueAt));
+    
+    /**
+     * 
+     * @return 
+     */
+    public double getInclination(){
+        return this.inclination;
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    public double getInitialValue(){
+        return this.initialValue;
     }
 
 }
