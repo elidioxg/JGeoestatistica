@@ -62,6 +62,11 @@ public class Vector {
         
     }
     
+    public void setData(Number[] data, int size){
+        this.data = data;
+        this.size = size;
+    }
+    
     public Number getValue(int index){        
         return this.data[index];
     }

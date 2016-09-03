@@ -28,6 +28,10 @@ public class Matrix {
     private int columns = 0;
     private Number[][] data;
 
+    public Matrix(){
+    
+    }
+    
     public Matrix(int columns, int lines) {
         data = new Number[columns][];
         for (int i = 0; i < columns; i++) {
@@ -60,37 +64,38 @@ public class Matrix {
     }
 
     public void fillZeros(int size) {
-        for (int i = 0; i < columns; i++) {
-            for (int j = 0; j < lines; j++) {
+        for (int i = 0; i < lines; i++) {
+            for (int j = 0; j < columns; j++) {
                 final int ii = i;
                 final int jj = j;
                 data[i][j] = new Number() {
                     @Override
                     public int intValue() {
-                        return (int) data[ii][jj];
+                        return (int) data[jj][ii];
                     }
 
                     @Override
                     public long longValue() {
-                        return (long) data[ii][jj];
+                        return (long) data[jj][ii];
                     }
 
                     @Override
                     public float floatValue() {
-                        return (float) data[ii][jj];
+                        return (float) data[jj][ii];
                     }
 
                     @Override
                     public double doubleValue() {
-                        return (double) data[ii][jj];
+                        return (double) data[jj][ii];
                     }
                 };
+                data[j][i] = 0;
             }
         }
 
     }
 
-    public void setMatrix(Number[][] data, int lines, int columns) {
+    public void setData(Number[][] data, int columns, int lines) {
         this.data = data;
         this.lines = lines;
         this.columns = columns;
