@@ -16,27 +16,26 @@
  */
 package geoestatistica.Statistics;
 
-import java.util.ArrayList;
+import geoestatistica.Vectors.Vector;
 
-public class Correlation {
+public class Pearson {
     
     /**
-     * Pearson coefficient
-     * @param array1
-     * @param array2
+     * Pearson correlation coefficient
+     * @param vector1
+     * @param vector2
      * @return
      * @throws Exception 
      */
-    public static double pearsonCoeff(ArrayList<Double> array1, 
-            ArrayList<Double> array2) throws Exception{        
-        double var1 = Variance.variance(array1);
-        double var2 = Variance.variance(array2);
-        double cov = Covariance.covariance(array1, array2);
+    public static double pearsonCoeff(Vector vector1, Vector vector2) throws Exception{        
+        double var1 = Variance.variance(vector1);
+        double var2 = Variance.variance(vector2);
+        double cov = Covariance.covariance(vector1, vector2);
         return cov/(Math.sqrt(var1*var2));        
     }
     
     /**
-     * Pearson coefficient
+     * Pearson coefficient using already known values of variance and covariance.
      * @param variance1
      * @param variance2
      * @param covariance

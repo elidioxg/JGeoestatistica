@@ -1,5 +1,7 @@
 package geoestatistica.Statistics;
 
+import geoestatistica.Vectors.Vector;
+
 public class VariationCoefficient {
     
     /**
