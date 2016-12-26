@@ -1,8 +1,47 @@
+/*
+ * Copyright (C) 2016 elidioxg
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 package geoestatistica.Statistics;
 
+import geoestatistica.Vectors.Vector;
 import java.util.ArrayList;
 
 public class Covariance {
+    
+    /**
+     * Calculate covariance of two vectors
+     * @param vector1
+     * @param vector2
+     * @return
+     * @throws Exception 
+     */
+    public static double covariance(Vector vector1, Vector vector2) throws Exception {
+        double result = 0.;
+        if(vector1.size()!=vector2.size()){
+            throw new Exception("The arrays must have same size");
+        } else {            
+            double avg1 = Average.arithmeticAverage(vector1);
+            double avg2 = Average.arithmeticAverage(vector2);
+            for(int i = 0; i <vector1.size(); i++){
+                result += (vector1.get(i).doubleValue() -
+                        avg1)*(vector2.get(i).doubleValue()- avg2);
+            }
+        }               
+        return result/vector1.size();
+    }    
     
     /**
      * 
@@ -46,4 +85,5 @@ public class Covariance {
         }               
         return result/array1.size();
     }
+    
 }

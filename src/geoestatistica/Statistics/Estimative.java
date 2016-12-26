@@ -1,5 +1,6 @@
 package geoestatistica.Statistics;
 
+import geoestatistica.Vectors.Vector;
 import java.util.ArrayList;
 
 public class Estimative {
@@ -50,7 +51,7 @@ public class Estimative {
      * @param studentConstant
      * @return 
      */
-    public static double samplingPrecisionGaussian(ArrayList<Double> arrayX,
+    public static double samplingPrecisionGaussian(Vector arrayX,
             double studentConstant){
         double avg = Average.arithmeticAverage(arrayX);
         double std = StdDeviation.stdDeviation(arrayX);        

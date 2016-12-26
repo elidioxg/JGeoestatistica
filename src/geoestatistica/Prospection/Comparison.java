@@ -2,7 +2,7 @@ package geoestatistica.Prospection;
 
 import geoestatistica.Statistics.Average;
 import geoestatistica.Statistics.StdDeviation;
-import java.util.ArrayList;
+import geoestatistica.Vectors.Vector;
 
 public class Comparison {
         
@@ -12,8 +12,8 @@ public class Comparison {
      * @param sample2
      * @return 
      */
-    public double compareSamples(ArrayList<Double> sample1, 
-            ArrayList<Double> sample2){        
+    public double compareSamples(Vector sample1, 
+            Vector sample2){        
         double average1 = Average.arithmeticAverage(sample1);
         double average2 = Average.arithmeticAverage(sample2);        
         double deviation1  = StdDeviation.stdDeviation(sample1);

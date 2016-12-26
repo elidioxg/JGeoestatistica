@@ -21,22 +21,24 @@ package geoestatistica.Vectors;
  * @author elidioxg
  */
 public class Vector {
-    
+
     private int size = 0;
     private Number[] data = null;
-    
-    public Vector(){
-        
+
+    public Vector() {
+
     }
-    
-    public Vector(Number[] data, int size){
+
+    public Vector(Number[] data, int size) {
         this.data = data;
         this.size = size;
     }
-    
-    public Vector(int size){
-        for(int i = 0; i <size ; i++){
-            final int ii = 1; 
+
+    public Vector(int size) {
+        this.data = new Number[size];
+        this.size = size;
+        for (int i = 0; i < size; i++) {
+            final int ii = i;
             data[i] = new Number() {
                 @Override
                 public int intValue() {
@@ -58,21 +60,96 @@ public class Vector {
                     return (double) data[ii];
                 }
             };
-        }        
-        
+        }
     }
-    
-    public void setData(Number[] data, int size){
+
+    public void setData(Number[] data, int size) {
         this.data = data;
         this.size = size;
     }
-    
-    public Number getValue(int index){        
+
+    public void set(int index, double value) throws Exception {
+        if (!this.data.equals(null)) {
+            if (index < this.data.length) {
+                this.data[index] = value;
+            } else {
+                throw new Exception("Index higher than vector size");
+            }
+        } else {
+            throw new Exception("Null vector data");
+        }
+
+    }
+
+    public Number get(int index) {
         return this.data[index];
     }
-    
-    public int getSize(){
+
+    public int size() {
         return this.size;
     }
-    
+
+    public void add(double value) {
+        Number[] vector = new Number[this.size++];
+        System.arraycopy(this.data, 0, vector, 0, this.size - 2);
+        final int ii = this.size;
+        vector[this.size] = new Number() {
+            @Override
+            public int intValue() {
+                return (int) vector[ii];
+            }
+
+            @Override
+            public long longValue() {
+                return (long) vector[ii];
+            }
+
+            @Override
+            public float floatValue() {
+                return (float) vector[ii];
+            }
+
+            @Override
+            public double doubleValue() {
+                return (double) vector[ii];
+            }
+        };
+        vector[this.size] = value;
+        this.data = vector;
+    }
+
+    public void sort() {
+        boolean finished = false;
+        while (!finished) {
+            int counter = 0;
+            for (int i = 1; i < this.data.length; i++) {
+                if (this.data[i - 1].doubleValue() < this.data[i].doubleValue()) {
+                    Double temp = this.data[i - 1].doubleValue();
+                    this.data[i - 1] = this.data[i].doubleValue();
+                    this.data[i] = temp;
+                    counter++;
+                }
+            }
+            if (counter == 0) {
+                finished = true;
+            }
+        }
+    }
+
+    public void print() {
+        System.out.println();
+        System.out.print("Vector: ");
+        for(int i = 0; i< this.size(); i++){
+            System.out.print(this.get(i)+" ");
+        }
+    }
+
+    public double sum() {
+        double result = 0.;
+        for (int i = 0; i < this.data.length; i++) {
+            result += this.data[i].doubleValue();
+        }
+        return result;
+    }
+
 }
