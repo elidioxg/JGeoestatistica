@@ -36,7 +36,6 @@ public class BlocksSurface {
     private Canvas surface;
     /*
      *Number of horizontal and vertical lines
-     *TODO: remover essa variavel e substituir por nBlocks
      */
     private final int gridLines;
     /**

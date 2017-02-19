@@ -50,8 +50,7 @@ public class Quartiles {
     }
 
     public static double amplitudeInterQuartiles(double first, double third) {
-        double result = Double.NaN;
-        result = third - first;
+        double result = third - first;
         return result;
     }
 

@@ -119,7 +119,9 @@ public class Matrix {
      * @param size
      */
     public Matrix(int size) {
-        data = new Number[columns][lines];
+        data = new Number[size][size];
+        columns = size;
+        lines = size;
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 final int ii = i;
@@ -235,8 +237,68 @@ public class Matrix {
         Vector vector = new Vector(data, lines);
         return vector;
     }
+    
+    public void print() {
+        System.out.println("Matrix data:");
+        for (int j = 0; j < this.getLinesCount(); j++) {
+            for (int i = 0; i < this.getColumnsCount(); i++) {
+                System.out.print(this.data[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
 
     public Vector getLine(int index) {
         return null;
+    }
+    
+    public Vector vectorMultiply(Vector vector) throws Exception {
+        System.out.println("VECTOR MULTIPLY");
+        if (this.columns != vector.size()) {
+            throw new Exception("Number of columns of matrix and vector size must be equal.");
+        }
+        Vector result = new Vector(this.getLinesCount());
+        for (int i = 0; i < this.lines; i++) {
+            double aux = 0.;
+            for (int j = 0; j < this.columns; j++) {
+                System.out.println("Value of matrix("+j+","+i+") = "+this.get(j, i));
+                aux += this.get(j, i).doubleValue() * vector.get(j).doubleValue();
+                System.out.println("Value of vector("+j+") = "+vector.get(j));
+                System.out.println("Multply result: "+aux);
+            }
+            result.set(i, aux);
+            System.out.println("Index: "+i+"  Value: "+aux);
+        }
+        return result;
+    }
+    
+    public Matrix getInverse() throws Exception {
+
+        if (this.getColumnsCount() != this.getLinesCount()) {
+            throw new Exception("Must be a Square Matrix.");
+        }
+        Matrix result = new Matrix(this.getColumnsCount());
+        //O procedimento abaixo funciona para matrix com tamanho
+        //divisível por 4, verificar como se comporta em outros tamanhos
+        //talvez seja necessário criar algoritmos para tamanho 3 
+        //e tamanhos que não sejam divisíveis por 4
+        for (int i = 0; i < this.getColumnsCount(); i = i + 2) {
+            for (int j = 0; j < this.getLinesCount(); j = j + 2) {
+                double A = this.get(i, j).doubleValue();
+                double B = this.get(i+1, j).doubleValue();
+                double C = this.get(i, j+1).doubleValue();
+                double D = this.get(i+1, j+1).doubleValue();
+                double ai = (1./A)+( (1/A)*B*(1/(D-(C*1/A*B)))*C*1/A);
+                double bi = -(1/A)*B*(1/(D-C*1/A*B));
+                double ci = -(1/(D-C*1/A*B))*C*1/A;
+                double di = (1/(D-C*1/A*B));
+                result.set(i, j, ai);
+                result.set(i+1, j, bi);
+                result.set(i, j+1, ci);
+                result.set(i+1, j+1, di);
+            }
+        }
+        result.print();
+        return result;
     }
 }
